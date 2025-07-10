@@ -1,3 +1,7 @@
 streamlit
 folium
 streamlit-folium
+yfinance
+pandas
+matplotlib
+
