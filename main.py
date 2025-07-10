@@ -3,58 +3,58 @@ import folium
 from streamlit_folium import st_folium
 from folium.plugins import MarkerCluster
 
-st.set_page_config(page_title="치앙마이 맛집 지도", layout="wide")
+st.set_page_config(page_title="Top 5 Chiang Mai Restaurants", layout="wide")
 
-st.title("🇹🇭 치앙마이 추천 맛집 5선")
-st.markdown("한국인 여행객들이 좋아하는 **치앙마이 현지 맛집** 5곳을 소개합니다. 지도에서 위치를 확인해보세요!")
+st.title("🇹🇭 Top 5 Local Restaurants in Chiang Mai")
+st.markdown("Here are 5 must-try local restaurants loved by Korean travelers. Explore their locations on the map below!")
 
 # ---------------------
-# 맛집 리스트 (5곳)
+# Restaurant data (5 spots)
 # ---------------------
 chiangmai_foods = [
     {
-        "name": "카오쏘이 메솟",
+        "name": "Khao Soi Mae Sai",
         "location": [18.7956, 98.9937],
-        "desc": "진한 국물의 치앙마이식 카레국수 전문점. 현지인과 관광객 모두에게 인기!",
-        "summary": "부드러운 면발과 진한 국물의 조화, 현지 스타일 카오쏘이 맛집"
+        "desc": "A famous local spot for Chiang Mai-style curry noodles (Khao Soi) with deep and rich broth.",
+        "summary": "Rich curry broth with soft noodles — a must-try Northern Thai specialty."
     },
     {
-        "name": "SP 치킨",
+        "name": "SP Chicken",
         "location": [18.7864, 98.9876],
-        "desc": "숯불에 구운 통닭이 유명한 로컬 치킨 맛집",
-        "summary": "겉은 바삭, 속은 촉촉! 숯불통닭이 일품인 숨은 명소"
+        "desc": "Renowned for charcoal-grilled whole chicken. Crispy skin and juicy meat!",
+        "summary": "Charcoal-grilled chicken that’s crispy outside and tender inside."
     },
     {
         "name": "Tikky Cafe",
         "location": [18.7883, 98.9816],
-        "desc": "깔끔하고 저렴한 태국 가정식 요리를 제공하는 인기 카페",
-        "summary": "신선한 재료로 만든 저렴하고 건강한 태국 가정식"
+        "desc": "Popular for clean, affordable Thai home-style dishes made with fresh ingredients.",
+        "summary": "Fresh and healthy Thai dishes served in a casual setting."
     },
     {
         "name": "Khao Soi Khun Yai",
         "location": [18.7940, 98.9811],
-        "desc": "오래된 골목길 안 숨겨진 카오쏘이 명가",
-        "summary": "현지인도 줄 서는 골목 맛집, 정통 카오쏘이 맛볼 수 있음"
+        "desc": "Hidden in a small alley, this spot offers authentic and traditional Khao Soi.",
+        "summary": "Locals line up here for authentic Khao Soi in a quiet alley."
     },
     {
         "name": "Huen Muan Jai",
         "location": [18.8042, 98.9724],
-        "desc": "치앙마이 북부 전통 요리를 맛볼 수 있는 식당",
-        "summary": "현지 분위기 가득한 북부 전통식 식당, 돼지고기 카레 추천"
+        "desc": "A restaurant serving traditional Northern Thai cuisine with a rustic atmosphere.",
+        "summary": "Authentic Northern Thai flavors in a cozy, traditional setting."
     },
 ]
 
 # ---------------------
-# 맛집 요약 출력
+# Restaurant summaries
 # ---------------------
-st.subheader("📋 맛집 요약 정보")
+st.subheader("📋 Restaurant Summaries")
 for food in chiangmai_foods:
     st.markdown(f"**🍴 {food['name']}** — {food['summary']}")
 
 # ---------------------
-# 지도에 마커 표시
+# Map
 # ---------------------
-st.subheader("📍 맛집 지도")
+st.subheader("📍 Restaurant Map")
 chiangmai_map = folium.Map(location=[18.7877, 98.9931], zoom_start=13)
 cluster = MarkerCluster().add_to(chiangmai_map)
 
